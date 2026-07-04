@@ -2,51 +2,27 @@
 Export yearly order statistics from AdventureWorks to CSV.
 """
 
+from database import get_connection
+from queries import load_query
 import pyodbc
 import csv
 
-## define connection string
-connection_string = """
-    DRIVER={ODBC Driver 17 for SQL Server};
-    SERVER=localhost;
-    DATABASE=AdventureWorks2022;
-    UID=sa;
-    PWD=sa;
-    TrustServerCertificate=yes;
-    """
+# Connect to odbc , using cursor and fetch data
+with get_connection() as connection:
+    cursor = connection.cursor()
+    cursor.execute(load_query("01-orders-per-year"))
+    rows = cursor.fetchall()
 
+    # Export query results to CSV
+    output_file_path = "data/orders_per_year.csv"
 
-## Defining query
-query = """
-	SELECT 
-		YEAR(OrderDate) AS OrderYear,
-		COUNT(*) AS OrderCount
-	FROM Sales.SalesOrderHeader
-	GROUP BY YEAR(OrderDate)
-	ORDER BY OrderYear
-    """
+    with open(output_file_path, "w", newline="", encoding="utf-8") as file:
+        csv_writer = csv.writer(file)
+        csv_writer.writerow(["Year", "Count"])
 
-## Connect to odbc , using cursor and fetch data
-connection = pyodbc.connect(connection_string)
-cursor = connection.cursor()
+        # csv_writer.writerows(rows)
+        for year, count in rows:
+            csv_writer.writerow([year, count])
 
-cursor.execute(query)
-rows = cursor.fetchall()
-
-## Export query results to CSV
-output_file_path =  "data/orders_per_year.csv"
-with open(output_file_path, "w" , newline="" , encoding="utf-8") as file:
-    csv_writer = csv.writer(file)
-    csv_writer.writerow(["Year" , "Count"])
-    # csv_writer.writerows(rows)
-    for year, count in rows:
-        csv_writer.writerow([year, count])
-
-
-# ## Print results to console
-# for year, count in rows:
-#     print(f"{year}, {count}")
-
-## closing objects
-cursor.close()
-connection.close()
+    # closing objects
+    cursor.close()
