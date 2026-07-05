@@ -1,0 +1,16 @@
+{
+    "jobs": [
+        {
+            "name": "orders_per_year",
+            "query": "01-orders-per-year.sql",
+            "transformer": "transform_orders_per_year",
+            "output": "orders_per_year.csv"
+        },
+        {
+            "name": "top_10_customers",
+            "query": "02-top-10-customers.sql",
+            "transformer": "transform_top_10_customers",
+            "output": "top_10_customers.csv"
+        }
+    ]
+}
