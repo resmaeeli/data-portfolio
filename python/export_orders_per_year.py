@@ -1,23 +1,15 @@
 """
-Export yearly order statistics from AdventureWorks to CSV.
+Configure and run the yearly orders export job.
 """
 
-from database import get_connection
-from queries import load_query
+# lib imports
 from transform import transform_orders_per_year
-from export_csv import export_to_csv
+from export_runner import run_export
 
-# import csv
+# values
+query_name = "01-orders-per-year"
+transformer = transform_orders_per_year
+output_file = "data/orders_per_year.csv"
 
-# Connect to odbc , using cursor and fetch data
-with get_connection() as connection:
-    cursor = connection.cursor()
-    cursor.execute(load_query("01-orders-per-year"))
-    rows = cursor.fetchall()
-
-    # Transforming records
-    transformed_rows = transform_orders_per_year(rows)
-
-    # Export query results to CSV
-    output_file_path = "data/orders_per_year.csv"
-    export_to_csv(transformed_rows, output_file_path)
+# exporting data
+run_export(query_name, transformer, output_file)
