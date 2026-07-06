@@ -9,9 +9,7 @@
 	-- Returns sales growth by month
 	-- 
 	--**********************************************************************
-	
-	USE AdventureWorks2022
-	GO
+
 
 
 	--===========  BEGIN CTE PART ===========--
