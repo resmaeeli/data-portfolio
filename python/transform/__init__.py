@@ -3,3 +3,4 @@ from .top_10_customers import transform_top_10_customers
 from .transform_top_10_products_by_sales_amount import (
     transform_top_10_products_by_sales_amount,
 )
+from .monthly_sales_trend import transform_monthly_sales_trend

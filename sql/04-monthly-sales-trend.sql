@@ -10,9 +10,6 @@
 	-- grouped by year and month.	
 	--**********************************************************
 	
-	USE AdventureWorks2022
-	GO
-
 	SELECT
 		YEAR(OrderDate) AS SalesYear , 
 		MONTH(OrderDate) AS SalesMonth,
