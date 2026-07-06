@@ -15,7 +15,6 @@ def run_job(job_name):
 
     for job in job_list:
         if job["name"] == job_name:
-
             transformer = getattr(transform, job["transformer"])
 
             run_export(
@@ -23,10 +22,14 @@ def run_job(job_name):
                 transformer=transformer,
                 output_file=job["output"],
             )
+            return
 
-            break
+    raise ValueError("Job name not recognized.")
 
 
 if __name__ == "__main__":
-    job_name = sys.argv[1]
-    run_job(job_name)
+    if len(sys.argv) != 2:
+        raise ValueError("Job name not recognized.")
+    else:
+        job_name = sys.argv[1]
+        run_job(job_name)
