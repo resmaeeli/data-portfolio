@@ -24,12 +24,18 @@ def run_job(job_name):
             )
             return
 
-    raise ValueError("Job name not recognized.")
+    raise ValueError(f"Unknown job: {job_name}")
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        raise ValueError("Job name not recognized.")
-    else:
+    try:
+
+        if len(sys.argv) != 2:
+            raise ValueError("Usage: python run_job.py <job_name>")
+
         job_name = sys.argv[1]
         run_job(job_name)
+
+    except ValueError as ex:
+        print(ex)
+        sys.exit(1)
