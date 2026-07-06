@@ -29,6 +29,12 @@
             "query": "05-top-customers-by-order-count.sql",
             "transformer": "transform_top_customers_by_order_count",
             "output": "top_customers_by_order_count.csv"
+        },
+        {
+            "name": "top_10_products_by_quantity_sold",
+            "query": "06-top-10-products-by-quantity-sold.sql",
+            "transformer": "transform_top_10_products_by_quantity_sold",
+            "output": "top_10_products_by_quantity_sold.csv"
         }
     ]
 }

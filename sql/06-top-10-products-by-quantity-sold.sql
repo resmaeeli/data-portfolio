@@ -9,9 +9,6 @@
 	-- Returns the top 10 products ranked by total quantity sold
 	-- 
 	--***************************************************************
-	
-	USE AdventureWorks2022
-	GO
 
 	SELECT TOP 10 
 		p.Name AS ProductName ,
