@@ -41,6 +41,12 @@
             "query": "07-sales-by-product-category.sql",
             "transformer": "transform_sales_by_product_category",
             "output": "sales_by_product_category.csv"
+        },
+        {
+            "name": "sales_by_territory",
+            "query": "08-sales-by-territory.sql",
+            "transformer": "transform_sales_by_territory",
+            "output": "sales_by_territory.csv"
         }
     ]
 }

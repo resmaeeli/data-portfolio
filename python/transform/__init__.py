@@ -7,3 +7,4 @@ from .monthly_sales_trend import transform_monthly_sales_trend
 from .top_customers_by_order_count import transform_top_customers_by_order_count
 from .top_10_products_by_quantity_sold import transform_top_10_products_by_quantity_sold
 from .sales_by_product_category import transform_sales_by_product_category
+from .sales_by_territory import transform_sales_by_territory

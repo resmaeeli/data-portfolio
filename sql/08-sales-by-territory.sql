@@ -9,9 +9,6 @@
 	-- Returns the count of orders and total sales amount per by territory
 	-- 
 	--**********************************************************************
-	
-	USE AdventureWorks2022
-	GO
 
 	SELECT 
 		st.Name AS TerritoryName,
