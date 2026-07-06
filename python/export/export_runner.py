@@ -2,10 +2,9 @@
 Run the export pipeline from query execution to CSV output.
 """
 
-from database import get_connection
-from queries import load_query
-from .export_csv import export_to_csv
 from pathlib import Path
+from database import get_connection, load_query
+from .export_csv import export_to_csv
 
 
 def run_export(

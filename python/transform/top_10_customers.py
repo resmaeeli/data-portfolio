@@ -1,15 +1,6 @@
 """
-Transform database query results into structured records.
+Transform "top 10 customers" query results into structured records.
 """
-
-
-def transform_orders_per_year(rows):
-    result = []
-
-    for year, count in rows:
-        result.append({"Year": year, "Count": count})
-
-    return result
 
 
 def transform_top_10_customers(rows):

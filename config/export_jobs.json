@@ -11,6 +11,12 @@
             "query": "02-top-10-customers.sql",
             "transformer": "transform_top_10_customers",
             "output": "top_10_customers.csv"
+        },
+        {
+            "name": "top-10-products-by-sales-amount",
+            "query": "03-top-10-products-by-sales-amount.sql",
+            "transformer": "transform_top_10_products_by_sales_amount",
+            "output": "top_10_products_by_sales_amount.csv"
         }
     ]
 }

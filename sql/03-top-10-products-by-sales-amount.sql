@@ -1,4 +1,4 @@
-﻿
+
 
 	--****************************************************
 	-- Title: Top 10 Products by Sales Amount
@@ -9,9 +9,7 @@
 	-- Returns top 10 products by total purchase amount
 	--
 	--****************************************************
-	
-	USE AdventureWorks2022
-	GO
+
 
 	SELECT TOP 10 
 		sod.ProductID, 
