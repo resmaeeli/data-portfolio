@@ -4,8 +4,8 @@ Run export jobs from the command line.
 
 import sys
 import transform
-from config_loader import load_jobs
-from export_runner import run_export
+from config import load_jobs
+from export import run_export
 
 
 def run_job(job_name):

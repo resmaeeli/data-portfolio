@@ -2,7 +2,7 @@
 Database connection factory.
 """
 
-from db_config import DB_SERVER, DB_NAME, DB_USER, DB_PASSWORD
+from .db_config import DB_SERVER, DB_NAME, DB_USER, DB_PASSWORD
 import pyodbc
 
 # check if server is localhost

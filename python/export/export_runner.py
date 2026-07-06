@@ -4,7 +4,7 @@ Run the export pipeline from query execution to CSV output.
 
 from database import get_connection
 from queries import load_query
-from export_csv import export_to_csv
+from .export_csv import export_to_csv
 from pathlib import Path
 
 
@@ -14,7 +14,7 @@ def run_export(
     output_file,
 ):
 
-    output_path = Path(__file__).parent.parent / "data" / output_file
+    output_path = Path(__file__).parent.parent.parent / "data" / output_file
     query = load_query(query_name)
 
     # Connect to odbc , using cursor and fetch data
