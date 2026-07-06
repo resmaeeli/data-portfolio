@@ -10,9 +10,6 @@
 	-- 
 	--***************************************************************
 	
-	USE AdventureWorks2022
-	GO
-
 	SELECT TOP 10 
 		COALESCE(
 				Store.Name,
@@ -26,6 +23,3 @@
 		LEFT JOIN Person.Person p ON c.PersonID = p.BusinessEntityID
 	GROUP BY soh.CustomerID , Sales.Store.Name , p.FirstName , p.LastName
 	ORDER BY OrderCount DESC
-
-
-	

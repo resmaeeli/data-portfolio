@@ -23,6 +23,12 @@
             "query": "04-monthly-sales-trend.sql",
             "transformer": "transform_monthly_sales_trend",
             "output": "monthly_sales_trend.csv"
+        },
+        {
+            "name": "top_customers_by_order_count",
+            "query": "05-top-customers-by-order-count.sql",
+            "transformer": "transform_top_customers_by_order_count",
+            "output": "top_customers_by_order_count.csv"
         }
     ]
 }
