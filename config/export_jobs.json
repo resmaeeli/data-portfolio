@@ -47,6 +47,12 @@
             "query": "08-sales-by-territory.sql",
             "transformer": "transform_sales_by_territory",
             "output": "sales_by_territory.csv"
+        },
+        {
+            "name": "average_order_value_by_year",
+            "query": "09-average-order-value-by-year.sql",
+            "transformer": "transform_average_order_value_by_year",
+            "output": "average_order_value_by_year.csv"
         }
     ]
 }

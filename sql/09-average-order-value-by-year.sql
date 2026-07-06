@@ -10,9 +10,6 @@
 	-- 
 	--**********************************************************************
 	
-	USE AdventureWorks2022
-	GO
-
 	SELECT 
 		YEAR(OrderDate) AS OrderYear,
 		COUNT(*) AS OrderCount,
