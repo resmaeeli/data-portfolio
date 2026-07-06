@@ -10,9 +10,6 @@
 	-- 
 	--*******************************************************************************
 	
-	USE AdventureWorks2022
-	GO
-
 	SELECT 
 		pc.Name AS CategoryName,
 		SUM(sod.OrderQty) AS TotalQuantitySold,		
