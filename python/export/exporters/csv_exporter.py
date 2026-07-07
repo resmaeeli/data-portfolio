@@ -5,7 +5,7 @@ Export structured records to a CSV file.
 import csv
 
 
-def export_to_csv(records, output_file):
+def export(records, output_file):
 
     if not records:
         raise ValueError("No records to export.")
