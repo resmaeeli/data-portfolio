@@ -4,7 +4,8 @@
             "name": "orders_per_year",
             "query": "01-orders-per-year.sql",
             "transformer": "transform_orders_per_year",
-            "output": "orders_per_year.csv"
+            "output": "orders_per_year.csv",
+            "file_format": "json"
         },
         {
             "name": "top_10_customers",
@@ -58,7 +59,8 @@
             "name": "monthly_sales_growth",
             "query": "10-monthly-sales-growth.sql",
             "transformer": "transform_monthly_sales_growth",
-            "output": "monthly_sales_growth.csv"
+            "output": "monthly_sales_growth.csv",
+            "file_format": "json"
         }
     ]
 }

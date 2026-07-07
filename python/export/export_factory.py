@@ -2,8 +2,8 @@
 Choosing fit exporter using selected file format.
 """
 
-from . import csv_export
-from . import json_export
+from .exporters import csv_export
+from .exporters import json_export
 
 
 def get_exporter(file_format):

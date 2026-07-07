@@ -51,7 +51,7 @@ if __name__ == "__main__":
         _file_format = None
         if len(sys.argv) > 2:
             _file_format = sys.argv[2]
-            if not _file_format in ("csv", "json"):
+            if _file_format not in ("csv", "json"):
                 raise ValueError("File format is not acceptable.")
 
         job_name = sys.argv[1]

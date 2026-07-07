@@ -1,5 +1,5 @@
 """
-Run the export pipeline from query execution to CSV output.
+Run the export pipeline from query execution to selected output format.
 """
 
 from pathlib import Path
