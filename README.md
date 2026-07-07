@@ -29,7 +29,7 @@ The primary goal of this project is to demonstrate clean software architecture, 
 * Configure export jobs without modifying application code.
 * Select output format through configuration or command-line arguments.
 * Add new reports by creating a SQL query and a transformer.
-* Extend export capabilities using the Strategy and Factory patterns.
+* Extend export capabilities using the Factory pattern.
 * Generate analytical reports from the AdventureWorks sample database.
 
 
@@ -185,27 +185,62 @@ cd data-portfolio
 
 python -m venv .venv
 
-source .venv/Scripts/activate
+source .venv/Scripts/activate    # Git Bash
 
 pip install -r requirements.txt
 ```
 
 ## Configuration
 
-The project uses two configuration files.
+The project uses two JSON configuration files.
 
-- `config/export_jobs.json` defines available reports, SQL queries, transformers, output files, and optional output formats.
-- `config/app_settings.json` stores application-level settings such as the default export format.
+### `config/export_jobs.json`
+
+Each report is defined as a configuration entry.
+
+```json
+{
+    "name": "orders_per_year",
+    "query": "01-orders-per-year.sql",
+    "transformer": "transform_orders_per_year",
+    "output": "orders_per_year.csv",
+    "file_format": "json"
+}
+```
+
+Each job defines:
+
+* Report name
+* SQL query
+* Transformer function
+* Output file name
+* Optional report-specific output format
+
+### `config/app_settings.json`
+
+Application-level settings are stored separately.
+
+```json
+{
+    "default_output_format": "csv"
+}
+```
+
+The output format is resolved in the following order:
+
+1. Command-line argument
+2. Report-specific configuration (`file_format`)
+3. Application default setting
 
 ## Usage
 
-Run a report using the default output format:
+Run a report using the configured output format:
 
 ```bash
 python python/run.py orders_per_year
 ```
 
-Specify the export format explicitly:
+Override the output format from the command line:
 
 ```bash
 python python/run.py monthly_sales_growth json
@@ -213,8 +248,11 @@ python python/run.py monthly_sales_growth json
 
 Supported output formats:
 
-- csv
-- json
+* csv
+* json
+
+Generated reports are written to the `data/` directory using the resolved output format.
+
 
 ## Sample Output
 
@@ -301,4 +339,4 @@ Fitness Toy Store,Stacey Cereghino,820383.5466
 
 ## License
 
-This project is available for portfolio and educational purposes.
+This project is licensed under the MIT License.
