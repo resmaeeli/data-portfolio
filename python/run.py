@@ -10,7 +10,7 @@ from config.loader import load_app_settings
 
 
 def run_job(job_name, file_format):
-    """Run an export job by name."""
+    """Run the selected export job using the requested or configured output format."""
 
     job_list = load_jobs()
 
