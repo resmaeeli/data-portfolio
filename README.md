@@ -131,6 +131,44 @@ JSON --> JSONFILE
 
 ## Project Structure
 
+```text
+data-portfolio/
+│
+├── config/
+│   ├── app_settings.json
+│   └── export_jobs.json
+│
+├── data/
+│
+├── python/
+│   ├── run.py
+│   │
+│   ├── config/
+│   ├── database/
+│   ├── export/
+│   │   └── exporters/
+│   └── transform/
+│
+├── sql/
+│
+└── README.md
+```
+
+### Python Package Overview
+
+| Module             | Responsibility                           |
+| ------------------ | ---------------------------------------- |
+| `run.py`           | Application entry point                  |
+| `config`           | Load application and job configuration   |
+| `database`         | Database connection and SQL loading      |
+| `transform`        | Convert SQL rows into structured records |
+| `export`           | Export pipeline orchestration            |
+| `export.exporters` | CSV and JSON exporters                   |
+
+```
+```
+
+
 ## Technologies
 
 ## Installation
