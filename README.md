@@ -73,106 +73,22 @@ SQL Server
 The following diagram illustrates the execution flow and module boundaries of the application.
 
 ```mermaid
-flowchart TD
+flowchart LR
 
-%% =========================
-%% Entry Layer
-%% =========================
-subgraph ENTRY["Entry Layer"]
-    USER["User"]
-    CLI["run.py"]
-    ARG1["job_name"]
-    ARG2["file_format (optional)"]
+User --> run.py
 
-    USER --> CLI
-    CLI --> ARG1
-    CLI --> ARG2
-end
+run.py --> Configuration
+Configuration --> SQL
 
-%% =========================
-%% Configuration Layer
-%% =========================
-subgraph CONFIG["Configuration Layer"]
-    JOBCFG["export_jobs.json"]
-    APPCFG["app_settings.json"]
-end
+SQL --> SQLServer
+SQLServer --> Transform
+Transform --> Export
 
-%% =========================
-%% Execution Layer
-%% =========================
-subgraph EXEC["Execution Layer"]
-    RUNJOB["run_job()"]
-    RUNEXPORT["run_export()"]
-end
+Export --> CSV
+Export --> JSON
 
-ARG1 --> RUNJOB
-ARG2 -->|override| RUNJOB
-JOBCFG -->|report configuration| RUNJOB
-APPCFG -->|default format| RUNJOB
-
-RUNJOB --> RUNEXPORT
-
-%% =========================
-%% Data Access Layer
-%% =========================
-subgraph DATA["Data Access Layer"]
-    LOADQUERY["load_query()"]
-    SQLFILES["SQL Files"]
-    DB["SQL Server"]
-    QUERY["Execute Query"]
-end
-
-RUNEXPORT --> LOADQUERY
-LOADQUERY --> SQLFILES
-SQLFILES --> QUERY
-DB --> QUERY
-
-%% =========================
-%% Transformation Layer
-%% =========================
-subgraph TRANSFORM["Transformation Layer"]
-    TRANSFORMER["Transformer"]
-    RECORDS["Structured Records"]
-end
-
-QUERY --> TRANSFORMER
-TRANSFORMER --> RECORDS
-
-%% =========================
-%% Export Layer
-%% =========================
-subgraph EXPORT["Export Layer"]
-    FACTORY["Export Factory"]
-    CSV["CSV Exporter"]
-    JSON["JSON Exporter"]
-end
-
-RECORDS --> FACTORY
-FACTORY --> CSV
-FACTORY --> JSON
-
-%% =========================
-%% Output Layer
-%% =========================
-subgraph OUTPUT["Output Layer"]
-    CSVFILE["CSV File"]
-    JSONFILE["JSON File"]
-end
-
-CSV --> CSVFILE
-JSON --> JSONFILE
-
-%% =========================
-%% Business Intelligence Layer
-%% =========================
-subgraph BI["Business Intelligence Layer"]
-    BUILDER["build_dataset.py"]
-    PBI["Portfolio.pbix"]
-end
-
-CSVFILE --> BUILDER
-BUILDER --> PBI
-
+CSV --> build_dataset.py
+build_dataset.py --> Portfolio.pbix
 ```
 
 ## Project Structure
