@@ -1,12 +1,12 @@
-# Data Portfolio
+# End-to-End Data Analytics Portfolio Project
 
 ## Project Overview
 
-This project is a configuration-driven ETL pipeline built with Python and SQL Server. It executes analytical SQL queries, transforms the returned data into structured records, and exports the results in multiple output formats.
+This project demonstrates an end-to-end data analytics workflow using SQL Server, Python, and Power BI.
 
-The project was designed with maintainability and extensibility in mind. New reports can be added through configuration without modifying the core execution pipeline, while additional export formats can be introduced by extending the export layer.
+It executes analytical SQL queries, transforms the results into structured datasets, exports them in CSV or JSON format, and presents the generated data through an interactive Power BI dashboard.
 
-The primary goal of this project is to demonstrate clean software architecture, modular design, and practical data engineering principles in a portfolio-ready application.
+The project focuses on clean architecture, modular design, and configuration-driven execution to demonstrate practical data engineering and business intelligence skills.
 
 ## Power BI Dashboard
 
@@ -36,31 +36,36 @@ SQL Server
 → CSV
 → Power BI Dashboard
 
-## Key Highlights
-
-* Configuration-driven ETL pipeline
-* SQL Server integration with Python
-* Generic query execution engine
-* Pluggable data transformation layer
-* Factory pattern with pluggable exporters
-* Multiple export formats (CSV and JSON)
-* 10 analytical reports built on AdventureWorks
-* Modular and extensible architecture
 
 ### Dashboard Preview
 
 ![Dashboard](powerbi/images/dashboard.png)
 
+
+## Key Highlights
+
+- End-to-end analytics workflow (SQL Server → Python → CSV → Power BI)
+- Configuration-driven ETL pipeline
+- SQL Server integration with Python
+- Clean modular architecture
+- Generic query execution engine
+- Pluggable data transformation layer
+- Factory pattern for export formats
+- Multiple export formats (CSV and JSON)
+- Interactive Power BI dashboard
+- 10 analytical reports built on AdventureWorks
+
+
 ## Features
 
-* Execute analytical SQL queries against SQL Server.
-* Transform query results into structured Python records.
-* Export reports to multiple output formats (CSV and JSON).
-* Configure export jobs without modifying application code.
-* Select output format through configuration or command-line arguments.
-* Add new reports by creating a SQL query and a transformer.
-* Extend export capabilities using the Factory pattern.
-* Generate analytical reports from the AdventureWorks sample database.
+- Execute analytical SQL queries against SQL Server
+- Transform query results into structured datasets
+- Export reports in CSV or JSON format
+- Generate datasets for Power BI dashboards
+- Configure export jobs without changing application code
+- Add new reports by creating a SQL query and a transformer
+- Extend export formats using the Factory pattern
+- Produce analytical reports from the AdventureWorks sample database
 
 
 ## Project Architecture
@@ -101,9 +106,9 @@ subgraph EXEC["Execution Layer"]
 end
 
 ARG1 --> RUNJOB
-ARG2 -- override --> RUNJOB
-JOBCFG -- report configuration --> RUNJOB
-APPCFG -- default format --> RUNJOB
+ARG2 -->|override| RUNJOB
+JOBCFG -->|report configuration| RUNJOB
+APPCFG -->|default format| RUNJOB
 
 RUNJOB --> RUNEXPORT
 
@@ -113,7 +118,7 @@ RUNJOB --> RUNEXPORT
 subgraph DATA["Data Access Layer"]
     LOADQUERY["load_query()"]
     SQLFILES["SQL Files"]
-    DB[("SQL Server")]
+    DB["SQL Server"]
     QUERY["Execute Query"]
 end
 
@@ -156,8 +161,19 @@ end
 
 CSV --> CSVFILE
 JSON --> JSONFILE
-```
 
+%% =========================
+%% Business Intelligence Layer
+%% =========================
+subgraph BI["Business Intelligence Layer"]
+    BUILDER["build_dataset.py"]
+    PBI["Portfolio.pbix"]
+end
+
+CSVFILE --> BUILDER
+BUILDER --> PBI
+
+```
 
 ## Project Structure
 
@@ -170,6 +186,12 @@ data-portfolio/
 │
 ├── data/
 │
+├── powerbi/
+│   ├── build_dataset.py
+│   ├── Portfolio.pbix
+│   └── images/
+│       └── dashboard.png
+│
 ├── python/
 │   ├── run.py
 │   │
@@ -181,30 +203,34 @@ data-portfolio/
 │
 ├── sql/
 │
+├── .gitignore
+├── LICENSE
+├── requirements.txt
 └── README.md
 ```
 
 ### Python Package Overview
 
-| Module             | Responsibility                           |
-| ------------------ | ---------------------------------------- |
-| `run.py`           | Application entry point                  |
-| `config`           | Load application and job configuration   |
-| `database`         | Database connection and SQL loading      |
-| `transform`        | Convert SQL rows into structured records |
-| `export`           | Export pipeline orchestration            |
-| `export.exporters` | CSV and JSON exporters                   |
-
+| Package | Responsibility |
+|---------|----------------|
+| `run.py` | Application entry point |
+| `config` | Load application configuration |
+| `database` | SQL Server connection and query loading |
+| `transform` | Convert query results into structured records |
+| `export` | Export pipeline orchestration |
+| `export.exporters` | CSV and JSON exporters |
 
 ## Technologies
 
 - Python 3.13
 - Microsoft SQL Server
+- Power BI Desktop
 - pyodbc
 - JSON
 - CSV
 - Git
 - GitHub
+
 
 ## Installation
 
@@ -218,6 +244,8 @@ python -m venv .venv
 source .venv/Scripts/activate    # Git Bash
 
 pip install -r requirements.txt
+
+Install Power BI Desktop if you want to open or modify the dashboard (`powerbi/Portfolio.pbix`).
 ```
 
 ## Configuration
@@ -282,6 +310,12 @@ Supported output formats:
 * json
 
 Generated reports are written to the `data/` directory using the resolved output format.
+
+Refresh all Power BI source datasets before opening the dashboard:
+
+```bash
+python powerbi/build_dataset.py
+```
 
 
 ## Sample Output
@@ -349,14 +383,13 @@ Fitness Toy Store,Stacey Cereghino,820383.5466
 
 ## Design Highlights
 
-* Package-based project structure with clear separation of responsibilities.
-* Configuration-driven report execution using JSON files.
-* Factory pattern for selecting export formats.
-* Modular transformer architecture for report-specific data processing.
-* Support for multiple output formats without changing business logic.
-* SQL queries stored separately from application code.
-* Database, transformation, and export layers remain loosely coupled.
-* Command-line interface with configuration fallback for output format selection.
+- Layered project architecture with clear separation of responsibilities.
+- Configuration-driven ETL execution.
+- Factory pattern for export formats.
+- Modular transformer architecture.
+- SQL queries separated from application logic.
+- Loosely coupled database, transformation, and export layers.
+- Power BI dashboard built on generated datasets.
 
 
 ## Future Improvements
@@ -366,6 +399,7 @@ Fitness Toy Store,Stacey Cereghino,820383.5466
 - Add automated unit tests.
 - Add logging and execution metrics.
 - Package the application as an installable CLI tool.
+- Add automated Power BI dataset refresh.
 
 ## License
 
