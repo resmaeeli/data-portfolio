@@ -8,6 +8,33 @@ The project was designed with maintainability and extensibility in mind. New rep
 
 The primary goal of this project is to demonstrate clean software architecture, modular design, and practical data engineering principles in a portfolio-ready application.
 
+## Power BI Dashboard
+
+This project includes a Power BI dashboard built on top of the generated CSV datasets.
+
+### Dashboard Features
+
+- Total Sales KPI
+- Average Order Value KPI
+- Total Orders KPI
+- Total Quantity Sold KPI
+- Orders per Year
+- Monthly Sales Trend
+- Monthly Sales Growth
+- Sales by Territory
+- Sales by Category
+- Top Customers
+- Top Products by Sales
+- Top Products by Quantity
+- Customer Order Count
+- Year Slicer
+
+### Data Flow
+
+SQL Server
+→ Python ETL
+→ CSV
+→ Power BI Dashboard
 
 ## Key Highlights
 
@@ -20,6 +47,9 @@ The primary goal of this project is to demonstrate clean software architecture, 
 * 10 analytical reports built on AdventureWorks
 * Modular and extensible architecture
 
+### Dashboard Preview
+
+![Dashboard](powerbi/images/dashboard.png)
 
 ## Features
 
