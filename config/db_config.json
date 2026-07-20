@@ -1,0 +1,22 @@
+{
+    "databases": {
+        "sqlserver": {
+            "type": "sqlserver",
+            "server": "localhost",
+            "port": 1433,
+            "database": "AdventureWorks",
+            "username": "sa",
+            "password": "sa",
+            "query_path": "db/sqlserver"
+        },
+        "postgresql": {
+            "type": "postgresql",
+            "server": "localhost",
+            "port": 5432,
+            "database": "pagila",
+            "username": "postgres",
+            "password": "reza",
+            "query_path": "db/postgresql"
+        }
+    }
+}

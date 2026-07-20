@@ -26,3 +26,13 @@ def load_app_settings():
         settings = json.load(file)
 
     return settings
+
+def load_db_config():
+    """Load settings from database config file."""
+
+    json_file = Path(__file__).parent.parent.parent/"config/db_config.json"
+
+    with open(json_file , "r" , encoding="utf-8-sig") as file:
+        db_settings  = json.load(file)
+
+        return db_settings

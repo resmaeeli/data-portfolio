@@ -7,14 +7,14 @@ from database import get_connection, load_query
 from .export_factory import get_exporter
 
 
-def run_export(query_name, transformer, output_file, file_format):
+def run_export(query_name, db_type, transformer, output_file, file_format):
     """Run the export pipeline and write the output using the selected exporter."""
     output_file = Path(output_file).stem
     output_path = (
         Path(__file__).parent.parent.parent / "data" / f"{output_file}.{file_format}"
     )
 
-    query = load_query(query_name)
+    query = load_query(db_type , query_name)
 
     with get_connection() as connection:
         cursor = connection.cursor()

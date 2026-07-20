@@ -2,6 +2,7 @@
     "jobs": [
         {
             "name": "orders_per_year",
+            "database": "sqlserver",
             "query": "01-orders-per-year.sql",
             "transformer": "transform_orders_per_year",
             "output": "orders_per_year.csv",
@@ -9,54 +10,63 @@
         },
         {
             "name": "top_10_customers",
+            "database": "sqlserver",
             "query": "02-top-10-customers.sql",
             "transformer": "transform_top_10_customers",
             "output": "top_10_customers.csv"
         },
         {
             "name": "top_10_products_by_sales_amount",
+            "database": "sqlserver",
             "query": "03-top-10-products-by-sales-amount.sql",
             "transformer": "transform_top_10_products_by_sales_amount",
             "output": "top_10_products_by_sales_amount.csv"
         },
         {
             "name": "monthly_sales_trend",
+            "database": "sqlserver",
             "query": "04-monthly-sales-trend.sql",
             "transformer": "transform_monthly_sales_trend",
             "output": "monthly_sales_trend.csv"
         },
         {
             "name": "top_customers_by_order_count",
+            "database": "sqlserver",
             "query": "05-top-customers-by-order-count.sql",
             "transformer": "transform_top_customers_by_order_count",
             "output": "top_customers_by_order_count.csv"
         },
         {
             "name": "top_10_products_by_quantity_sold",
+            "database": "sqlserver",
             "query": "06-top-10-products-by-quantity-sold.sql",
             "transformer": "transform_top_10_products_by_quantity_sold",
             "output": "top_10_products_by_quantity_sold.csv"
         },
         {
             "name": "sales_by_product_category",
+            "database": "sqlserver",
             "query": "07-sales-by-product-category.sql",
             "transformer": "transform_sales_by_product_category",
             "output": "sales_by_product_category.csv"
         },
         {
             "name": "sales_by_territory",
+            "database": "sqlserver",
             "query": "08-sales-by-territory.sql",
             "transformer": "transform_sales_by_territory",
             "output": "sales_by_territory.csv"
         },
         {
             "name": "average_order_value_by_year",
+            "database": "sqlserver",
             "query": "09-average-order-value-by-year.sql",
             "transformer": "transform_average_order_value_by_year",
             "output": "average_order_value_by_year.csv"
         },
         {
             "name": "monthly_sales_growth",
+            "database": "sqlserver",
             "query": "10-monthly-sales-growth.sql",
             "transformer": "transform_monthly_sales_growth",
             "output": "monthly_sales_growth.csv",
