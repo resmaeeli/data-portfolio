@@ -16,7 +16,7 @@ def run_export(query_name, db_type, transformer, output_file, file_format):
 
     query = load_query(db_type , query_name)
 
-    with get_connection() as connection:
+    with get_connection(db_type) as connection:
         cursor = connection.cursor()
         cursor.execute(query)
         rows = cursor.fetchall()

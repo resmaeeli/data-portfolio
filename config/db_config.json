@@ -4,10 +4,11 @@
             "type": "sqlserver",
             "server": "localhost",
             "port": 1433,
-            "database": "AdventureWorks",
+            "database": "AdventureWorks2022",
             "username": "sa",
             "password": "sa",
-            "query_path": "db/sqlserver"
+            "query_path": "db/sqlserver",
+            "trust_server_certificate": "no"
         },
         "postgresql": {
             "type": "postgresql",
@@ -16,7 +17,7 @@
             "database": "pagila",
             "username": "postgres",
             "password": "reza",
-            "query_path": "db/postgresql"
+            "query_path": "db/postgresql"            
         }
     }
 }
