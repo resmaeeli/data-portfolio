@@ -1,12 +1,15 @@
+"""
+SqlServer connection provider strategy
+"""
 
-#from .db_config import DB_SERVER, DB_NAME, DB_USER, DB_PASSWORD
 import pyodbc
 
 
-# finding appropriate odbc driver
-def _get_odbc_driver():
-    drivers = pyodbc.drivers()
 
+def _get_odbc_driver():
+    """ finding appropriate odbc driver """
+
+    drivers = pyodbc.drivers()
     odbc_drivers = [
         driver for driver in drivers
         if driver.startswith("ODBC Driver") and "SQL Server" in driver
@@ -22,11 +25,9 @@ def _get_odbc_driver():
     return odbc_drivers[0]
 
 
-# get connection string
-def get_connection_string(db_config):
-    
-    #creating connection_string
-    _connection_string = f"""
+def _get_dsn(db_config):
+    """ Create DSN """  
+    dsn = f"""
         DRIVER={{{_get_odbc_driver()}}};
         SERVER={db_config["server"]};
         DATABASE={db_config["database"]};
@@ -34,9 +35,10 @@ def get_connection_string(db_config):
         PWD={db_config["password"]};
         TrustServerCertificate={db_config["trust_server_certificate"]};
         """
-    return _connection_string
+    return dsn
 
 
 def get_connection(db_config):
-    connection = pyodbc.connect(get_connection_string(db_config))
+    """ Get SQL Server connection """
+    connection = pyodbc.connect(_get_dsn(db_config))
     return connection

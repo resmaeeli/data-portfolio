@@ -71,6 +71,86 @@
             "transformer": "transform_monthly_sales_growth",
             "output": "monthly_sales_growth.csv",
             "file_format": "json"
+        },
+        {
+            "name": "transform_top_actors_by_film_count",
+            "database": "postgresql",
+            "query": "01-top-actors-by-film-count.sql",
+            "transformer": "transform_top_actors_by_film_count",
+            "output": "transform_top_actors_by_film_count.csv",
+            "file_format": "json"
+        },
+        {
+            "name": "film_category_analysis",
+            "database": "postgresql",
+            "query": "02-film-category-analysis.sql",
+            "transformer": "transform_film_category_analysis",
+            "output": "film_category_analysis.csv",
+            "file_format": "json"
+        },
+        {
+            "name": "monthly_rental_trend",
+            "database": "postgresql",
+            "query": "03-monthly-rental-trend.sql",
+            "transformer": "transform_monthly_rental_trend",
+            "output": "monthly_rental_trend.csv",
+            "file_format": "json"
+        },
+        {
+            "name": "top_customers_by_rental",
+            "database": "postgresql",
+            "query": "04-top-customers-by-rental.sql",
+            "transformer": "transform_top_customers_by_rental",
+            "output": "top_customers_by_rental.csv",
+            "file_format": "json"
+        },
+        {
+            "name": "revenue_by_category",
+            "database": "postgresql",
+            "query": "05-revenue-by-category.sql",
+            "transformer": "transform_revenue_by_category",
+            "output": "revenue_by_category.csv",
+            "file_format": "json"
+        },
+        {
+            "name": "film_rating_analysis",
+            "database": "postgresql",
+            "query": "06-film-rating-analysis.sql",
+            "transformer": "transform_film_rating_analysis",
+            "output": "film_rating_analysis.csv",
+            "file_format": "json"
+        },
+        {
+            "name": "store_performance",
+            "database": "postgresql",
+            "query": "07-store-performance.sql",
+            "transformer": "transform_store_performance",
+            "output": "store_performance.csv",
+            "file_format": "json"
+        },
+        {
+            "name": "top_films_by_rental",
+            "database": "postgresql",
+            "query": "08-top-films-by-rental.sql",
+            "transformer": "transform_top_films_by_rental",
+            "output": "top_films_by_rental.csv",
+            "file_format": "json"
+        },
+        {
+            "name": "film_length_analysis",
+            "database": "postgresql",
+            "query": "09-film-length-analysis.sql",
+            "transformer": "transform_film_length_analysis",
+            "output": "film_length_analysis.csv",
+            "file_format": "json"
+        },
+        {
+            "name": "customer_activity_analysis",
+            "database": "postgresql",
+            "query": "10-customer-activity-analysis.sql",
+            "transformer": "transform_customer_activity_analysis",
+            "output": "customer_activity_analysis.csv",
+            "file_format": "json"
         }
     ]
 }

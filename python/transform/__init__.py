@@ -10,3 +10,18 @@ from .sales_by_product_category import transform_sales_by_product_category
 from .sales_by_territory import transform_sales_by_territory
 from .average_order_value_by_year import transform_average_order_value_by_year
 from .monthly_sales_growth import transform_monthly_sales_growth
+
+
+
+
+
+from .top_actors_by_film_count import transform_top_actors_by_film_count
+from .film_category_analysis import transform_film_category_analysis
+from .monthly_rental_trend import transform_monthly_rental_trend
+from .top_customers_by_rental import transform_top_customers_by_rental
+from .revenue_by_category import transform_revenue_by_category
+from .film_rating_analysis import transform_film_rating_analysis
+from .store_performance import transform_store_performance
+from .top_films_by_rental import transform_top_films_by_rental
+from .film_length_analysis import transform_film_length_analysis
+from .customer_activity_analysis import transform_customer_activity_analysis
