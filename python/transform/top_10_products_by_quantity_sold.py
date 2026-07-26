@@ -1,17 +1,10 @@
 """
-Transform "top 10 products by quantity sold" query results into structured records.
+Transform "06-top-10-products-by-quantity-sold.sql" query results into DataFrame.
 """
 
+import pandas as pd
 
-def transform_top_10_products_by_quantity_sold(rows):
-    result = []
 
-    for ProductName, TotalQuantitySold in rows:
-        result.append(
-            {
-                "ProductName": ProductName,
-                "TotalQuantitySold": TotalQuantitySold,
-            }
-        )
-
-    return result
+def transform_top_10_products_by_quantity_sold(rows, columns):
+    df = pd.DataFrame(rows, columns=columns)
+    return df

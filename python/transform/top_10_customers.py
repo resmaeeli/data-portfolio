@@ -1,18 +1,9 @@
 """
-Transform "top 10 customers" query results into structured records.
+Transform "02-top-10-customers.sql" query results into DataFrame.
 """
 
+import pandas as pd
 
-def transform_top_10_customers(rows):
-    result = []
-
-    for StoreName, PersonName, TotalPurchasedAmount in rows:
-        result.append(
-            {
-                "StoreName": StoreName,
-                "PersonName": PersonName,
-                "TotalPurchasedAmount": TotalPurchasedAmount,
-            }
-        )
-
-    return result
+def transform_top_10_customers(rows, columns):
+    df = pd.DataFrame(rows , columns=columns)
+    return df    

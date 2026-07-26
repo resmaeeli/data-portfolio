@@ -1,19 +1,10 @@
 """
-Transform "monthly sales trend" query results into structured records.
+Transform "04-monthly-sales-trend.sql" query results into DataFrame.
 """
 
+import pandas as pd
 
-def transform_monthly_sales_trend(rows):
-    result = []
 
-    for SalesYear, SalesMonth, OrderCount, TotalSales in rows:
-        result.append(
-            {
-                "SalesYear": SalesYear,
-                "SalesMonth": SalesMonth,
-                "OrderCount": OrderCount,
-                "TotalSales": TotalSales,
-            }
-        )
-
-    return result
+def transform_monthly_sales_trend(rows, columns):
+    df = pd.DataFrame(rows, columns=columns)
+    return df

@@ -19,8 +19,12 @@ def main():
     print(f"Generating {len(jobs)} datasets...\n")
 
     for job in jobs:
-        print(f"Running: {job['name']}")
-        run_job(job["name"], "csv")
+        output_format = (
+            sys.argv[1] if len(sys.argv) > 1 else (job.get("file_format") or "csv")
+        )
+
+        print(f"Running: {job['name']}.{output_format}")
+        run_job(job["name"], output_format)
 
     print("\nDone.")
 

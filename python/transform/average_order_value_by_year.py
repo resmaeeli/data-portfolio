@@ -1,18 +1,9 @@
 """
-Transform "average order value by year" query results into structured records.
+Transform "09-average-order-value-by-year.sql" query results into DataFrame.
 """
 
+import pandas as pd
 
-def transform_average_order_value_by_year(rows):
-    result = []
-
-    for OrderYear, OrderCount, AverageOrderValue in rows:
-        result.append(
-            {
-                "OrderYear": OrderYear,
-                "OrderCount": OrderCount,
-                "AverageOrderValue": AverageOrderValue,
-            }
-        )
-
-    return result
+def transform_average_order_value_by_year(rows , columns):
+    df = pd.DataFrame(rows , columns=columns)
+    return df

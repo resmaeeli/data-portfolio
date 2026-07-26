@@ -1,12 +1,9 @@
 """
-Transform "orders per year" query results into structured records.
+Transform "01-orders-per-year.sql" query results into DataFrame.
 """
 
+import pandas as pd
 
-def transform_orders_per_year(rows):
-    result = []
-
-    for year, count in rows:
-        result.append({"Year": year, "Count": count})
-
-    return result
+def transform_orders_per_year(rows, columns):    
+    df = pd.DataFrame(rows , columns=columns)
+    return df

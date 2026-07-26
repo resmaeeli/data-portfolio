@@ -1,20 +1,10 @@
 """
-Transform "monthly sales growth" query results into structured records.
+Transform "10-monthly-sales-growth.sql" query results into DataFrame.
 """
 
+import pandas as pd
 
-def transform_monthly_sales_growth(rows):
-    result = []
 
-    for SalesYear, SalesMonth, TotalSales, PreviousMonthSales, GrowthAmount in rows:
-        result.append(
-            {
-                "SalesYear": SalesYear,
-                "SalesMonth": SalesMonth,
-                "TotalSales": TotalSales,
-                "PreviousMonthSales": PreviousMonthSales,
-                "GrowthAmount": GrowthAmount,
-            }
-        )
-
-    return result
+def transform_monthly_sales_growth(rows, columns):
+    df = pd.DataFrame(rows, columns=columns)
+    return df

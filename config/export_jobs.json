@@ -73,11 +73,11 @@
             "file_format": "json"
         },
         {
-            "name": "transform_top_actors_by_film_count",
+            "name": "top_actors_by_film_count",
             "database": "postgresql",
             "query": "01-top-actors-by-film-count.sql",
             "transformer": "transform_top_actors_by_film_count",
-            "output": "transform_top_actors_by_film_count.csv",
+            "output": "top_actors_by_film_count.csv",
             "file_format": "json"
         },
         {

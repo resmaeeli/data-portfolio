@@ -1,18 +1,10 @@
 """
-Transform "sales by territory" query results into structured records.
+Transform "08-sales-by-territory.sql" query results into DataFrame.
 """
 
+import pandas as pd
 
-def transform_sales_by_territory(rows):
-    result = []
 
-    for TerritoryName, OrderCount, TotalSalesAmount in rows:
-        result.append(
-            {
-                "TerritoryName": TerritoryName,
-                "OrderCount": OrderCount,
-                "TotalSalesAmount": TotalSalesAmount,
-            }
-        )
-
-    return result
+def transform_sales_by_territory(rows, columns):
+    df = pd.DataFrame(rows, columns=columns)
+    return df

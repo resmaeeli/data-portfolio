@@ -19,9 +19,11 @@ def run_export(query_name, db_type, transformer, output_file, file_format):
     with get_connection(db_type) as connection:
         cursor = connection.cursor()
         cursor.execute(query)
+        columns = [column[0] for column in cursor.description]        
         rows = cursor.fetchall()
 
-    transformed_rows = transformer(rows)
+    rows = [tuple(row) for row in rows]
+    transformed_df = transformer(rows, columns)
 
     exporter = get_exporter(file_format)
-    exporter(transformed_rows, output_path)
+    exporter(transformed_df, output_path)

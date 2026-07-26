@@ -30,7 +30,7 @@ def run_job(job_name, file_format):
 
             run_export(
                 query_name=job["query"],
-                db_type = job["database"],
+                db_type=job["database"],
                 transformer=transformer,
                 output_file=job["output"],
                 file_format=output_format,
@@ -41,9 +41,7 @@ def run_job(job_name, file_format):
     raise ValueError(f"Unknown job: {job_name}")
 
 
-
-#run_job("orders_per_year" , 'csv')
-
+# run_job("orders_per_year" , 'csv')
 
 
 if __name__ == "__main__":

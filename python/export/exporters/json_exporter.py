@@ -1,14 +1,15 @@
 """
-Export structured records to a JSON file.
+Export DataFrame to JSON file.
 """
 
-import json
+def export(df, output_file):
 
-
-def export(records, output_file):
-
-    if not records:
+    if df.empty:
         raise ValueError("No records to export.")
 
-    with open(output_file, "w", encoding="utf-8") as file:
-        json.dump(records, file, indent=4, default=str)
+    df.to_json(
+        output_file,
+        orient="records",
+        indent=4,
+        date_format="iso"
+    )

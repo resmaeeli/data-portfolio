@@ -1,16 +1,14 @@
 """
-Export structured records to a CSV file.
+Export DataFrame to CSV file.
 """
 
-import csv
+def export(df, output_file):
 
-
-def export(records, output_file):
-
-    if not records:
+    if df.empty:
         raise ValueError("No records to export.")
 
-    with open(output_file, "w", newline="", encoding="utf-8") as file:
-        csv_writer = csv.DictWriter(file, fieldnames=records[0].keys())
-        csv_writer.writeheader()
-        csv_writer.writerows(records)
+    df.to_csv(
+        output_file,
+        index=False,
+        encoding="utf-8"
+    )
