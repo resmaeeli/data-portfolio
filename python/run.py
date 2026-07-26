@@ -25,8 +25,7 @@ def run_job(job_name, file_format):
                 output_format = job["file_format"]
 
             else:
-                settings = load_app_settings()
-                output_format = settings["default_output_format"]
+                output_format = load_app_settings()["default_output_format"]
 
             run_export(
                 query_name=job["query"],
@@ -55,8 +54,6 @@ if __name__ == "__main__":
         _file_format = None
         if len(sys.argv) > 2:
             _file_format = sys.argv[2]
-            if _file_format not in ("csv", "json"):
-                raise ValueError("File format is not acceptable.")
 
         job_name = sys.argv[1]
         run_job(job_name, _file_format)

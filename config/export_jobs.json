@@ -6,7 +6,7 @@
             "query": "01-orders-per-year.sql",
             "transformer": "transform_orders_per_year",
             "output": "orders_per_year.csv",
-            "file_format": "json"
+            "file_format": "parquet"
         },
         {
             "name": "top_10_customers",

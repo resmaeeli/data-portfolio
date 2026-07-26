@@ -1,3 +1,8 @@
 {
-    "default_output_format": "csv"
+    "default_output_format": "tt",
+    "supported_output_formats": [
+        "csv",
+        "json",
+        "parquet"
+    ]
 }

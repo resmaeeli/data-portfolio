@@ -2,6 +2,7 @@
 Generate all datasets required by the Power BI dashboard.
 """
 
+from config import load_app_settings
 from pathlib import Path
 import sys
 
@@ -20,7 +21,11 @@ def main():
 
     for job in jobs:
         output_format = (
-            sys.argv[1] if len(sys.argv) > 1 else (job.get("file_format") or "csv")
+            sys.argv[1]
+            if len(sys.argv) > 1
+            else (
+                job.get("file_format") or load_app_settings()["default_output_format"]
+            )
         )
 
         print(f"Running: {job['name']}.{output_format}")
