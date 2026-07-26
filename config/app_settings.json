@@ -1,5 +1,5 @@
 {
-    "default_output_format": "tt",
+    "default_output_format": "json",
     "supported_output_formats": [
         "csv",
         "json",

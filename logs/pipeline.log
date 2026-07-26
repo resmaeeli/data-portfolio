@@ -1,0 +1,65 @@
+2026-07-26 16:07:02,786 | INFO | Start job: orders_per_year
+2026-07-26 16:07:02,786 | INFO | Executing job: orders_per_year | Database: sqlserver | Format: parquet
+2026-07-26 16:07:02,831 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\orders_per_year.parquet
+2026-07-26 16:07:02,832 | INFO | Start job: top_10_customers
+2026-07-26 16:07:02,832 | INFO | Executing job: top_10_customers | Database: sqlserver | Format: tt
+2026-07-26 16:08:20,510 | INFO | Start job: orders_per_year
+2026-07-26 16:08:20,511 | INFO | Executing job: orders_per_year | Database: sqlserver | Format: parquet
+2026-07-26 16:08:20,557 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\orders_per_year.parquet
+2026-07-26 16:08:20,558 | INFO | Start job: top_10_customers
+2026-07-26 16:08:20,558 | INFO | Executing job: top_10_customers | Database: sqlserver | Format: json
+2026-07-26 16:08:20,605 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\top_10_customers.json
+2026-07-26 16:08:20,606 | INFO | Start job: top_10_products_by_sales_amount
+2026-07-26 16:08:20,606 | INFO | Executing job: top_10_products_by_sales_amount | Database: sqlserver | Format: json
+2026-07-26 16:08:20,650 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\top_10_products_by_sales_amount.json
+2026-07-26 16:08:20,651 | INFO | Start job: monthly_sales_trend
+2026-07-26 16:08:20,652 | INFO | Executing job: monthly_sales_trend | Database: sqlserver | Format: json
+2026-07-26 16:08:20,664 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\monthly_sales_trend.json
+2026-07-26 16:08:20,665 | INFO | Start job: top_customers_by_order_count
+2026-07-26 16:08:20,665 | INFO | Executing job: top_customers_by_order_count | Database: sqlserver | Format: json
+2026-07-26 16:08:20,702 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\top_customers_by_order_count.json
+2026-07-26 16:08:20,703 | INFO | Start job: top_10_products_by_quantity_sold
+2026-07-26 16:08:20,704 | INFO | Executing job: top_10_products_by_quantity_sold | Database: sqlserver | Format: json
+2026-07-26 16:08:20,722 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\top_10_products_by_quantity_sold.json
+2026-07-26 16:08:20,723 | INFO | Start job: sales_by_product_category
+2026-07-26 16:08:20,723 | INFO | Executing job: sales_by_product_category | Database: sqlserver | Format: json
+2026-07-26 16:08:20,768 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\sales_by_product_category.json
+2026-07-26 16:08:20,769 | INFO | Start job: sales_by_territory
+2026-07-26 16:08:20,770 | INFO | Executing job: sales_by_territory | Database: sqlserver | Format: json
+2026-07-26 16:08:20,779 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\sales_by_territory.json
+2026-07-26 16:08:20,780 | INFO | Start job: average_order_value_by_year
+2026-07-26 16:08:20,780 | INFO | Executing job: average_order_value_by_year | Database: sqlserver | Format: json
+2026-07-26 16:08:20,791 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\average_order_value_by_year.json
+2026-07-26 16:08:20,792 | INFO | Start job: monthly_sales_growth
+2026-07-26 16:08:20,792 | INFO | Executing job: monthly_sales_growth | Database: sqlserver | Format: json
+2026-07-26 16:08:20,805 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\monthly_sales_growth.json
+2026-07-26 16:08:20,807 | INFO | Start job: top_actors_by_film_count
+2026-07-26 16:08:20,807 | INFO | Executing job: top_actors_by_film_count | Database: postgresql | Format: json
+2026-07-26 16:08:20,848 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\top_actors_by_film_count.json
+2026-07-26 16:08:20,849 | INFO | Start job: film_category_analysis
+2026-07-26 16:08:20,849 | INFO | Executing job: film_category_analysis | Database: postgresql | Format: json
+2026-07-26 16:08:20,877 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\film_category_analysis.json
+2026-07-26 16:08:20,878 | INFO | Start job: monthly_rental_trend
+2026-07-26 16:08:20,878 | INFO | Executing job: monthly_rental_trend | Database: postgresql | Format: json
+2026-07-26 16:08:20,916 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\monthly_rental_trend.json
+2026-07-26 16:08:20,917 | INFO | Start job: top_customers_by_rental
+2026-07-26 16:08:20,917 | INFO | Executing job: top_customers_by_rental | Database: postgresql | Format: json
+2026-07-26 16:08:21,076 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\top_customers_by_rental.json
+2026-07-26 16:08:21,076 | INFO | Start job: revenue_by_category
+2026-07-26 16:08:21,077 | INFO | Executing job: revenue_by_category | Database: postgresql | Format: json
+2026-07-26 16:08:21,120 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\revenue_by_category.json
+2026-07-26 16:08:21,120 | INFO | Start job: film_rating_analysis
+2026-07-26 16:08:21,120 | INFO | Executing job: film_rating_analysis | Database: postgresql | Format: json
+2026-07-26 16:08:21,147 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\film_rating_analysis.json
+2026-07-26 16:08:21,147 | INFO | Start job: store_performance
+2026-07-26 16:08:21,148 | INFO | Executing job: store_performance | Database: postgresql | Format: json
+2026-07-26 16:08:21,194 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\store_performance.json
+2026-07-26 16:08:21,194 | INFO | Start job: top_films_by_rental
+2026-07-26 16:08:21,194 | INFO | Executing job: top_films_by_rental | Database: postgresql | Format: json
+2026-07-26 16:08:21,235 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\top_films_by_rental.json
+2026-07-26 16:08:21,235 | INFO | Start job: film_length_analysis
+2026-07-26 16:08:21,236 | INFO | Executing job: film_length_analysis | Database: postgresql | Format: json
+2026-07-26 16:08:21,263 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\film_length_analysis.json
+2026-07-26 16:08:21,264 | INFO | Start job: customer_activity_analysis
+2026-07-26 16:08:21,264 | INFO | Executing job: customer_activity_analysis | Database: postgresql | Format: json
+2026-07-26 16:08:21,295 | INFO | Export completed: D:\IMG-DE\data-portfolio\data\customer_activity_analysis.json
