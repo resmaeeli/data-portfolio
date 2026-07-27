@@ -1,0 +1,1 @@
+SELECT 'PostgreSQL initialization started';
