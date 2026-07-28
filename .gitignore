@@ -8,3 +8,7 @@ data/*
 
 logs/*
 !logs/.gitkeep
+
+# SQL Server backup files
+*.bak
+docker/init/sqlserver/backup/*.bak
