@@ -1,12 +1,32 @@
-# End-to-End Data Analytics Portfolio Project
+# End-to-End Data Engineering & Analytics Portfolio Project
 
 ## Project Overview
 
-This project demonstrates an end-to-end data analytics workflow using SQL Server, Python, and Power BI.
+This project demonstrates an end-to-end data engineering and analytics workflow using Docker, SQL Server, PostgreSQL, Python, and Power BI.
 
-It executes analytical SQL queries, transforms the results into structured datasets, exports them in CSV or JSON format, and presents the generated data through an interactive Power BI dashboard.
+It provides a reproducible local data environment, executes analytical SQL queries, transforms the results into structured datasets, exports them in CSV or JSON format, and presents the generated data through an interactive Power BI dashboard.
 
-The project focuses on clean architecture, modular design, and configuration-driven execution to demonstrate practical data engineering and business intelligence skills.
+The project focuses on clean architecture, modular design, configuration-driven execution, and practical data engineering patterns.
+
+## Dockerized Development Environment
+
+The project provides a reproducible local data environment using Docker Compose.
+
+The environment includes:
+
+- SQL Server 2022 for enterprise relational data processing
+- PostgreSQL 17 for open-source database workloads
+- Automated database initialization
+- Health checks for service readiness
+- Persistent database storage using Docker volumes
+
+Database initialization workflow:
+
+Docker Compose
+→ Container Startup
+→ SQL Server Readiness Check
+→ AdventureWorks Database Restore
+→ PostgreSQL Pagila Initialization
 
 ## Power BI Dashboard
 
@@ -31,11 +51,12 @@ This project includes a Power BI dashboard built on top of the generated CSV dat
 
 ### Data Flow
 
-SQL Server
-→ Python ETL
-→ CSV
-→ Power BI Dashboard
+Dockerized Data Environment
 
+SQL Server / PostgreSQL
+→ Python ETL Pipeline
+→ CSV / JSON Datasets
+→ Power BI Dashboard
 
 ### Dashboard Preview
 
@@ -44,29 +65,49 @@ SQL Server
 
 ## Key Highlights
 
-- End-to-end analytics workflow (SQL Server → Python → CSV → Power BI)
-- Configuration-driven ETL pipeline
-- SQL Server integration with Python
-- Clean modular architecture
-- Generic query execution engine
-- Pluggable data transformation layer
-- Factory pattern for export formats
-- Multiple export formats (CSV and JSON)
-- Interactive Power BI dashboard
-- 10 analytical reports built on AdventureWorks
+- End-to-end data engineering workflow
+  (Database → Python ETL → Dataset Export → Power BI)
 
+- Dockerized reproducible data environment
+
+- SQL Server and PostgreSQL integration
+
+- Configuration-driven ETL pipeline
+
+- Clean modular architecture
+
+- Strategy pattern for transformations
+
+- Factory pattern for export formats
+
+- Dynamic query loading
+
+- Multiple export formats:
+  - CSV
+  - JSON
+  - Parquet
+
+- Centralized application logging
+
+- Interactive Power BI dashboard
+
+- 20+ analytical reports across SQL Server and PostgreSQL datasets
 
 ## Features
 
-- Execute analytical SQL queries against SQL Server
-- Transform query results into structured datasets
-- Export reports in CSV or JSON format
+- Execute analytical SQL queries against SQL Server and PostgreSQL
+- Support multiple database environments
+- Transform query results into structured datasets using Python
+- Export reports in multiple formats:
+  - CSV
+  - JSON
+  - Parquet
 - Generate datasets for Power BI dashboards
 - Configure export jobs without changing application code
-- Add new reports by creating a SQL query and a transformer
+- Add new reports by creating SQL queries and transformer modules
 - Extend export formats using the Factory pattern
-- Produce analytical reports from the AdventureWorks sample database
-
+- Use configuration-driven ETL execution
+- Produce analytical reports from AdventureWorks and Pagila sample databases
 
 ## Project Architecture
 
@@ -182,9 +223,33 @@ data-portfolio/
 │
 ├── config/
 │   ├── app_settings.json
+│   ├── db_config.json
 │   └── export_jobs.json
 │
-├── data/
+├── db/
+│   ├── sqlserver/
+│   │   ├── 01-orders-per-year.sql
+│   │   ├── 02-top-10-customers.sql
+│   │   └── analytical queries...
+│   │
+│   └── postgresql/
+│       ├── 01-top-actors-by-film-count.sql
+│       ├── 02-film-category-analysis.sql
+│       └── analytical queries...
+│
+├── docker/
+│   └── init/
+│       ├── sqlserver/
+│       │   ├── entrypoint.sh
+│       │   ├── setup.sh
+│       │   ├── restore.sql
+│       │   └── backup/
+│       │       └── AdventureWorks2022.bak (ignored by Git)
+│       │
+│       └── postgres/
+│           ├── init.sql
+│           └── backup/
+│               └── pagila.sql
 │
 ├── powerbi/
 │   ├── build_dataset.py
@@ -194,16 +259,25 @@ data-portfolio/
 │
 ├── python/
 │   ├── run.py
-│   │
 │   ├── config/
 │   ├── database/
 │   ├── export/
 │   │   └── exporters/
-│   └── transform/
+│   ├── transform/
+│   └── utils/
 │
-├── sql/
+├── data/
+│   └── generated datasets (ignored by Git)
 │
+├── logs/
+│   └── runtime logs (ignored by Git)
+│
+├── scripts/
+│   └── setup.ps1
+│
+├── docker-compose.yml
 ├── .gitignore
+├── .gitattributes
 ├── LICENSE
 ├── requirements.txt
 └── README.md
@@ -213,40 +287,96 @@ data-portfolio/
 
 | Package | Responsibility |
 |---------|----------------|
-| `run.py` | Application entry point |
-| `config` | Load application configuration |
-| `database` | SQL Server connection and query loading |
-| `transform` | Convert query results into structured records |
-| `export` | Export pipeline orchestration |
-| `export.exporters` | CSV and JSON exporters |
+| `run.py` | Application entry point and command-line execution |
+| `config` | Load and manage application and export job configurations |
+| `database` | Manage database connections and load SQL query files |
+| `transform` | Transform query results into structured analytical datasets |
+| `export` | Orchestrate dataset export workflow |
+| `export.exporters` | Provide export implementations for CSV, JSON, and Parquet formats |
 
 ## Technologies
 
+- Docker
+- Docker Compose
+- Microsoft SQL Server 2022
+- PostgreSQL 17
 - Python 3.13
-- Microsoft SQL Server
 - Power BI Desktop
 - pyodbc
-- JSON
-- CSV
+- Linux Shell Scripts
+- PowerShell
 - Git
 - GitHub
+- JSON
+- CSV
+- Parquet
+
 
 
 ## Installation
+
+### Prerequisites
+
+Required tools:
+
+- Docker Desktop
+- Docker Compose
+- Python 3.13
+- Power BI Desktop (optional)
+
+### Clone Repository
 
 ```bash
 git clone https://github.com/resmaeeli/data-portfolio.git
 
 cd data-portfolio
-
-python -m venv .venv
-
-source .venv/Scripts/activate    # Git Bash
-
-pip install -r requirements.txt
-
-Install Power BI Desktop if you want to open or modify the dashboard (`powerbi/Portfolio.pbix`).
 ```
+
+
+### Start Data Infrastructure
+Start the Dockerized database environment:
+
+```bash
+docker compose up -d
+```
+
+This starts:
+
+- Microsoft SQL Server 2022
+- PostgreSQL 17
+
+
+The initialization workflow automatically performs:
+
+- SQL Server readiness validation
+- AdventureWorks2022 database restore
+- PostgreSQL Pagila database initialization
+- Database healthcheck validation
+
+### Setup Python Environment
+
+Create a virtual environment:
+```bash
+python -m venv .venv
+```
+
+Activate the environment using Git Bash:
+```bash
+source .venv/Scripts/activate
+```
+Install Python dependencies:
+
+``` bash
+pip install -r requirements.txt
+```
+
+### Power BI Dashboard (Optional)
+
+Install Power BI Desktop if you want to open or modify the dashboard:
+
+`powerbi/Portfolio.pbix`
+
+
 
 ## Configuration
 
@@ -320,7 +450,7 @@ python powerbi/build_dataset.py
 
 ## Sample Output
 
-The project generates structured reports in both **CSV** and **JSON** formats.
+The project generates structured datasets in **CSV**, **JSON**, and **Parquet** formats.
 
 ### Orders Per Year (CSV)
 
@@ -394,12 +524,11 @@ Fitness Toy Store,Stacey Cereghino,820383.5466
 
 ## Future Improvements
 
-- Add additional export formats (Excel, Parquet).
-- Support command-line filtering parameters.
-- Add automated unit tests.
-- Add logging and execution metrics.
-- Package the application as an installable CLI tool.
-- Add automated Power BI dataset refresh.
+- Add automated unit tests
+- Support command-line filtering parameters
+- Package the application as an installable CLI tool
+- Add automated Power BI dataset refresh
+- Extend data validation capabilities
 
 ## License
 
