@@ -112,108 +112,71 @@ SQL Server / PostgreSQL
 ## Project Architecture
 
 The following diagram illustrates the execution flow and module boundaries of the application.
-
 ```mermaid
 flowchart TD
 
-%% =========================
-%% Entry Layer
-%% =========================
-subgraph ENTRY["Entry Layer"]
-    USER["User"]
-    CLI["run.py"]
-    ARG1["job_name"]
-    ARG2["file_format (optional)"]
-
-    USER --> CLI
-    CLI --> ARG1
-    CLI --> ARG2
+subgraph Entry
+    A[run.py<br/>Single Job Execution]
+    B[Job Name]
+    C[Output Format]
+    
+    O[build_dataset.py<br/>Batch Dataset Builder]
+    
+    A --> B
+    A --> C
+    O --> C
 end
 
-%% =========================
-%% Configuration Layer
-%% =========================
-subgraph CONFIG["Configuration Layer"]
-    JOBCFG["export_jobs.json"]
-    APPCFG["app_settings.json"]
+subgraph Configuration
+    D[export_jobs.json]
+    E[app_settings.json]
 end
 
-%% =========================
-%% Execution Layer
-%% =========================
-subgraph EXEC["Execution Layer"]
-    RUNJOB["run_job()"]
-    RUNEXPORT["run_export()"]
+subgraph Data_Access
+    F[Load SQL Query]
+    G[(SQL Server)]
+    H[(PostgreSQL)]
 end
 
-ARG1 --> RUNJOB
-ARG2 -->|override| RUNJOB
-JOBCFG -->|report configuration| RUNJOB
-APPCFG -->|default format| RUNJOB
-
-RUNJOB --> RUNEXPORT
-
-%% =========================
-%% Data Access Layer
-%% =========================
-subgraph DATA["Data Access Layer"]
-    LOADQUERY["load_query()"]
-    SQLFILES["SQL Files"]
-    DB["SQL Server"]
-    QUERY["Execute Query"]
+subgraph Transformation
+    I[Python Transformer]
+    J[Pandas DataFrame]
 end
 
-RUNEXPORT --> LOADQUERY
-LOADQUERY --> SQLFILES
-SQLFILES --> QUERY
-DB --> QUERY
-
-%% =========================
-%% Transformation Layer
-%% =========================
-subgraph TRANSFORM["Transformation Layer"]
-    TRANSFORMER["Transformer"]
-    RECORDS["Structured Records"]
+subgraph Export
+    K[Export Factory]
+    L[CSV]
+    M[JSON]
+    N[Parquet]
 end
 
-QUERY --> TRANSFORMER
-TRANSFORMER --> RECORDS
-
-%% =========================
-%% Export Layer
-%% =========================
-subgraph EXPORT["Export Layer"]
-    FACTORY["Export Factory"]
-    CSV["CSV Exporter"]
-    JSON["JSON Exporter"]
+subgraph Analytics
+    P[Power BI Dashboard]
 end
 
-RECORDS --> FACTORY
-FACTORY --> CSV
-FACTORY --> JSON
+B --> D
+C --> D
 
-%% =========================
-%% Output Layer
-%% =========================
-subgraph OUTPUT["Output Layer"]
-    CSVFILE["CSV File"]
-    JSONFILE["JSON File"]
-end
+O --> D
 
-CSV --> CSVFILE
-JSON --> JSONFILE
+D --> F
+E --> K
 
-%% =========================
-%% Business Intelligence Layer
-%% =========================
-subgraph BI["Business Intelligence Layer"]
-    BUILDER["build_dataset.py"]
-    PBI["Portfolio.pbix"]
-end
+G --> F
+H --> F
 
-CSVFILE --> BUILDER
-BUILDER --> PBI
+F --> I
+I --> J
 
+J --> K
+
+K --> L
+K --> M
+K --> N
+
+L --> P
+M --> P
+N --> P
 ```
 
 ## Project Structure
