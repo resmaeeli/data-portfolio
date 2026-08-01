@@ -6,11 +6,11 @@ from pathlib import Path
 import json
 
 
-def _load_json(file_name):    
+def _load_json(file_name):
     """Load JSON configuration file."""
 
     with open(file_name, "r", encoding="utf-8-sig") as file:
-        records = json.load(file)    
+        records = json.load(file)
     return records
 
 
@@ -33,12 +33,16 @@ def load_app_settings():
 def load_db_config():
     """Load settings from database config file."""
 
-    json_file = Path(__file__).parent.parent.parent/"config/db_config.json"
+    json_file = Path(__file__).parent.parent.parent / "config/db_config.json"
     db_settings = _load_json(json_file)
     return db_settings
 
-    
+
 def get_database_config(db_type):
-    """ Load databse config from config file. """
+    """Load database configuration for the selected database."""
     config = load_db_config()
+
+    if db_type not in config["databases"]:
+        raise ValueError(f"Unknown database type: {db_type}")
+
     return config["databases"][db_type]

@@ -6,7 +6,7 @@
             "port": 1433,
             "database": "AdventureWorks2022",
             "username": "sa",
-            "password": "sa",
+            "password": "YourStrong@Pass123",
             "query_path": "db/sqlserver",
             "trust_server_certificate": "no"
         },
@@ -16,8 +16,8 @@
             "port": 5432,
             "database": "pagila",
             "username": "postgres",
-            "password": "reza",
-            "query_path": "db/postgresql"            
+            "password": "YourStrong@Pass123",
+            "query_path": "db/postgresql"
         }
     }
 }

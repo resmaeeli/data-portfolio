@@ -29,13 +29,13 @@ def run_export(query_name, db_type, transformer, output_file, file_format):
     rows = [tuple(row) for row in rows]
     transformed_df = transformer(rows, columns)
 
-    logger_pipeline.info(f"Export completed: {output_path}")
-
     exporter = get_exporter(file_format)
     exporter(transformed_df, output_path)
+
+    logger_pipeline.info(f"Export completed: {output_path}")
 
     duration = time.time() - start_time
 
     logger_pipeline.info(
-        f"Job Completed : Duration: {duration:.2f} | Records : {len(rows)} | Query Name: {query_name}"
+        f"Job Completed : Duration: {duration:.2f} | Records : {len(transformed_df)} | Query Name: {query_name}"
     )

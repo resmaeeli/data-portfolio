@@ -21,7 +21,7 @@ def get_exporter(file_format):
     if file_format not in supported_formats:
         raise ValueError(f"Unsupported export format: {file_format}")
 
-    try:
-        return EXPORTERS[file_format]
-    except KeyError:
+    if file_format not in EXPORTERS:
         raise RuntimeError(f"No exporter registered for '{file_format}'.")
+
+    return EXPORTERS[file_format]
