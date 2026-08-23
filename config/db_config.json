@@ -2,13 +2,14 @@
     "databases": {
         "sqlserver": {
             "type": "sqlserver",
-            "server": "localhost",
+            "server": "sqlserver",
             "port": 1433,
             "database": "AdventureWorks2022",
             "username": "sa",
             "password": "YourStrong@Pass123",
             "query_path": "db/sqlserver",
-            "trust_server_certificate": "no"
+            "trust_server_certificate": "yes",
+            "Encrypt": "no"
         },
         "postgresql": {
             "type": "postgresql",
