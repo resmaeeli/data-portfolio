@@ -4,6 +4,7 @@ Provides functions for loading export job configurations.
 
 from pathlib import Path
 import json
+import os
 
 
 def _load_json(file_name):
@@ -33,7 +34,10 @@ def load_app_settings():
 def load_db_config():
     """Load settings from database config file."""
 
-    json_file = Path(__file__).parent.parent.parent / "config/db_config.json"
+    default_path = Path(__file__).parent.parent.parent / "config/db_config.json"
+
+    json_file = Path(os.getenv("DB_CONFIG_PATH", default_path))
+
     db_settings = _load_json(json_file)
     return db_settings
 
